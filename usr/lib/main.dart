@@ -27,7 +27,10 @@ class UniversityManagementApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
-        '/dashboard': (context) => const DashboardScreen(),
+        '/dashboard': (context) {
+          final args = ModalRoute.of(context)?.settings.arguments as String?;
+          return DashboardScreen(role: args ?? 'Student');
+        },
         '/attendance': (context) => const AttendanceScreen(),
         '/result': (context) => const ResultScreen(),
         '/routine': (context) => const RoutineScreen(),
